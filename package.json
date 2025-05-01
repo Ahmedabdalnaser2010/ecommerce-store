@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .ts,.tsx",
     "preview": "vite preview",
     "type-check": "tsc",
-    "server": "json-server --watch public/data/db.json --port 3001" // Add this for JSON Server
+    "server": "json-server --watch public/data/db.json --port 3001"
   },
   "dependencies": {
     "@formspree/react": "^3.0.0",
