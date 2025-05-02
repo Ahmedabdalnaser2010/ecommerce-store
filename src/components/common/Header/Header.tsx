@@ -128,7 +128,7 @@ const Header = () => {
 
             dispatch(logOutCurrentUser())
             // /////////////////////////////////////////////////////////////////////////////////
-            if (productInfo.length > 0 || Object.keys(selectedItem).length > 0) {
+            if (productInfo.length >= 0 || Object.keys(selectedItem).length >= 0) {
 
                 dispatch(postUserOrder(orderDitails))
             }
