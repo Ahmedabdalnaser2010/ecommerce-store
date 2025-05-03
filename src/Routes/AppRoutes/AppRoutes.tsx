@@ -45,7 +45,7 @@ const AppRoutes = () => {
                 </Suspense >
 
             ),
-            // errorElement: <NotFoundPage />,
+            errorElement: <NotFoundPage />,
             children: [
                 {
                     index: true,
