@@ -1,15 +1,19 @@
-import Loading from "@components/feedback/Loading/Loading"
+// import Loading from "@components/feedback/Loading/Loading"
 import { Link } from "react-router"
+import logoOne from "../../../public/Account page/security._CB657836742_.webp"
+import logoTwo from "../../../public/Account page/order._CB657847415_.webp"
+import logoThree from "../../../public/Account page/11_lists._CB608110873_.webp"
+import logoFour from "../../../public/Account page/contact_us._CB665051409_.webp"
 
 
 
 const Account = () => {
 
     const accountPageContent = [
-        { link: "/profile", name: "Profile Info", content: "Your full info first name, last name, email .", image: "../../../public/Account page/security._CB657836742_.png" },
-        { link: "/cart", name: "Your Orders", content: "Track, return, cancel an order,  buy again .", image: "../../../public/Account page/order._CB657847415_.png" },
-        { link: "/wishlist", name: "Your Wishlist", content: "View, modify and share your lists .", image: "../../../public/Account page/11_lists._CB608110873_.png" },
-        { link: "/contact", name: "Contact Us", content: "Browse self service options, help articles or contact us . ", image: "../../../public/Account page/contact_us._CB665051409_.png" },
+        { link: "/profile", name: "Profile Info", content: "Your full info first name, last name, email .", image: { logoOne } },
+        { link: "/cart", name: "Your Orders", content: "Track, return, cancel an order,  buy again .", image: { logoTwo } },
+        { link: "/wishlist", name: "Your Wishlist", content: "View, modify and share your lists .", image: { logoThree } },
+        { link: "/contact", name: "Contact Us", content: "Browse self service options, help articles or contact us . ", image: { logoFour } },
 
 
     ]
