@@ -5,36 +5,36 @@ import { getItemsinWishList } from "src/store/Slices/WishListPage/actGetItemsinW
 import { setWishList, storedWishListItems } from "src/store/Slices/WishListPage/WishListSlice"
 
 
-const useWishlist = (autoFetch = true) => {
+const useWishlist = (autoFetch = false) => {
 
     const dispatch = useAppDispatch()
     const { selectedItem, wishItemState } = useAppSelector(state => state.WishList)
     const { order } = useAppSelector(state => state.placeOrder)
     const { user, accessToken } = useAppSelector(state => state.auth)
 
+
+
     useEffect(() => {
 
-        if (!selectedItem) {
+        if (Object.keys(selectedItem).length == 0) {
             dispatch(getItemsinWishList())
             dispatch(getUserOrder())
         }
 
-
-
     }, [dispatch, user?.id, selectedItem])
 
-    const filteringLastOrder = order.filter(ele => ele.userId === user?.id).slice(-1)[0]
+    const filteringLastOrder = useMemo(() => order.filter(ele => ele.userId === user?.id).slice(-1)[0] ?? {}, [order, user?.id])
 
 
-    const gettingStateStoredWishlistItems = useMemo(() => { return filteringLastOrder?.stateItemsInWishList ? filteringLastOrder.stateItemsInWishList : [] }, [filteringLastOrder])
-    const gettingStoredWishlistItems = useMemo(() => { return filteringLastOrder?.itemsInWishList ? filteringLastOrder.itemsInWishList : [] }, [filteringLastOrder])
+    const gettingStateStoredWishlistItems = useMemo(() => { return filteringLastOrder.stateItemsInWishList ? filteringLastOrder.stateItemsInWishList : [] }, [filteringLastOrder])
+    const gettingStoredWishlistItems = useMemo(() => { return filteringLastOrder.itemsInWishList ? filteringLastOrder.itemsInWishList : [] }, [filteringLastOrder])
 
 
     const newAddedItems = selectedItem
 
-    const va = Object.keys(gettingStoredWishlistItems) ? gettingStoredWishlistItems : {}
-    const vat = Object.keys(selectedItem) ? selectedItem : {}
-    const merge = { ...va, ...vat }
+    // const va = Object.keys(gettingStoredWishlistItems) ? gettingStoredWishlistItems : {}
+    // const vat = Object.keys(selectedItem) ? selectedItem : {}
+    // const merge = { ...va, ...vat }
 
 
     useEffect(() => {
@@ -44,17 +44,22 @@ const useWishlist = (autoFetch = true) => {
             dispatch(setWishList(gettingStateStoredWishlistItems))
             dispatch(storedWishListItems(gettingStoredWishlistItems))
 
-        } else {
+        }
+        else {
             dispatch(setWishList(wishItemState))
             dispatch(storedWishListItems(selectedItem))
         }
 
 
-    }, [autoFetch, dispatch, accessToken, gettingStoredWishlistItems, gettingStateStoredWishlistItems, selectedItem, wishItemState])
+    }, [autoFetch, dispatch, accessToken])
 
 
 
-
+    // console.log(selectedItem)
+    // console.log(gettingStoredWishlistItems)
+    // console.log(filteringLastOrder)
+    // console.log(gettingStateStoredWishlistItems)
+    // console.log(gettingStoredWishlistItems)
 
 
 

@@ -110,7 +110,7 @@ const ProductDetailsCard = ({ title, image, price, description, brand, model, co
                         </div>
                     </div>
 
-                    <div>
+                    <div className="text-gray-700">
                         <h2 className="border-t text-xl font-bold pt-1">Product Overview </h2>
                         <p className="text-xl text-green-500 font-bold">In stock</p>
                         <div>

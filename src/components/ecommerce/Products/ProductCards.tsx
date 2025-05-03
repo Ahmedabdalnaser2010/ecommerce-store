@@ -62,8 +62,8 @@ const ProductCards = ({ title, description, price, discount, id, category, image
 
                     <div className="bg-slate-50 border-gray-100 border-t h-[140px] p-4 relative" >
                         <div className=" ">
-                            <span className="text-blue-700 font-bold pr-3">${price.toFixed(2)}  </span>
-                            <span className="text-gray-400 font-semibold line-through">{checkDiscount}</span>
+                            <span className="text-blue-500 font-bold pr-3">${price.toFixed(2)}  </span>
+                            <span className="text-gray-400 font-semibold text-sm line-through">{checkDiscount}</span>
 
                         </div>
                         <h3 className="h-[30px] text-gray-900 text-base font-medium mt-1 overflow-hidden" title={title}>{title.substring(0, 25)} ...</h3>

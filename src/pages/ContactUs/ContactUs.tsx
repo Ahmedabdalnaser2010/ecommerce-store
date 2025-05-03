@@ -12,7 +12,7 @@ function ContactUS() {
     }
 
     return (
-        <section className=' max-h-[100vh] '>
+        <section className=' max-h-[100vh] text-gray-900'>
             <motion.span id='contact' className='text-blue-400 dark:text-white  flex justify-center font-bold text-3xl p-2 w-[220px] m-auto  italic '  > Contact Us</motion.span>
             <div className=' mt-5   text-slate-600 dark:text-white '>
                 <div className="title py-5 flex items-center">

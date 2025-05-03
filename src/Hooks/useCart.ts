@@ -1,5 +1,6 @@
 import { TProducts } from "@customtypes/TProducts.types"
-import { useEffect, useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
+import { useLocation } from "react-router"
 import { useAppDispatch, useAppSelector } from "src/store/hooks"
 import { getItemsinCart } from "src/store/Slices/Cart/actGetItemsinCart"
 import { setItems } from "src/store/Slices/Cart/CartSlice"
@@ -11,8 +12,11 @@ const useCart = (autoFetch = true) => {
 
     const dispatch = useAppDispatch()
     const { order } = useAppSelector(state => state.placeOrder)
-    const { user } = useAppSelector(state => state.auth)
+    const { user, accessToken } = useAppSelector(state => state.auth)
     const { productInfo, items } = useAppSelector(state => state.cart)
+
+    const location = useLocation().pathname
+    console.log(location)
 
     const countOfItems = useAppSelector(totalQuantitiesOfAllItems) || 0
 
@@ -99,24 +103,33 @@ const useCart = (autoFetch = true) => {
 
 
 
-
-
+    const hh = !Object.keys(items).filter(el => el in getAllItems)
+    console.log(hh)
+    const [intialization, setIntialization] = useState(false)
 
     useEffect(() => {
-
-
-
-        if (Object.keys(getAllItems).length > 0 && Object.keys(items).length > 0) {
-
+        // 
+        // &&JSON.stringify(getAllItems).length >= JSON.stringify(items).length
+        if (accessToken) {
+            setIntialization(false)
+        }
+        if (Object.keys(getAllItems).length > 0 && Object.keys(items).length >= 0 && intialization == false) {
 
             dispatch(setItems(getAllItems));
-        } else {
+            setIntialization(true)
+
+        } else if (intialization == true) {
+
+            dispatch(setItems(items))
+            setIntialization(false)
+        }
+        if (location == "/cart") {
             dispatch(setItems(items))
         }
 
 
 
-    }, [dispatch, Object.keys(getAllItems).length]);
+    }, [dispatch, accessToken]);
 
 
 
@@ -138,7 +151,11 @@ const useCart = (autoFetch = true) => {
     }
 
 
-
+    console.log(getStoredOrder)
+    console.log(getStoredOrderLength)
+    console.log(gettingStoredItems)
+    console.log(getAllItems)
+    console.log(items)
 
 
 

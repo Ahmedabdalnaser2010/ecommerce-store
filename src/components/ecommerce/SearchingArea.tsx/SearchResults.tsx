@@ -32,7 +32,7 @@ const SearchResults = ({ input, setInput }: { input: string, setInput: (e: strin
 
 
                 <>
-                    <div className="absolute top-[50px] left-[50%] translate-x-[-50%] p-2 bg-white shadow-lg opacity-[96%] flex flex-col w-full rounded-2xl max-h-[450px] overflow-y-scroll gap-2 min-w-[300px]" >
+                    <div className="absolute top-[50px] left-[50%] translate-x-[-50%] p-2 bg-white shadow-lg opacity-[96%] flex flex-col w-full rounded-2xl max-h-[450px] overflow-y-scroll gap-2 min-w-[300px] text-gray-900" >
                         {SearchingEquation.length > 0 ? (SearchingEquation.map(el => {
                             return (
                                 <div className="  h-[60px] text-wrap flex items-center hover:bg-gray-200 p-1 rounded-md">

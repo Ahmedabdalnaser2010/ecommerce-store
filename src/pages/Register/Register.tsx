@@ -7,13 +7,9 @@ import actGettingRegisterData from "src/store/Slices/registerSlice/actAuth/actGe
 import { IoIosCloseCircle } from "react-icons/io";
 import toast from "react-hot-toast";
 import { BiHide, BiShow } from "react-icons/bi";
-import { Link, Navigate, useLocation, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import { MdCloudDone } from "react-icons/md";
-import { debounce } from "lodash";
-import { resetError } from "src/store/Slices/registerSlice/registerSlice";
-import axios from "axios";
-import apiClient from "src/api/apiClient";
-import useCheckEmailAvailability from "src/Hooks/useCheckEmailAvailability";
+
 
 
 
@@ -22,33 +18,37 @@ import useCheckEmailAvailability from "src/Hooks/useCheckEmailAvailability";
 const Register = () => {
 
 
-    const navigate = useNavigate()
-    const location = useLocation().pathname
-    const dispatch = useAppDispatch()
-    const { loading, error, accessToken } = useAppSelector(state => state.auth)
-
     // Handling password input
     const [showPassword, setShowPassword] = useState(false)
     const [showRePassword, setShowRePassword] = useState(false)
+
     const showPasswordIcon = <BiShow />
     const HidePasswordIcon = <BiHide />
 
-    const displayPasswordHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const displayPasswordHandler = (e: any) => {
         setShowPassword(!showPassword)
         e.preventDefault()
     }
-    const displayRePasswordHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const displayRePasswordHandler = (e: any) => {
         setShowRePassword(!showRePassword)
         e.preventDefault()
     }
 
+    useEffect(() => {
+        setShowPassword(false)
+        setShowRePassword(false)
+    }, [])
+
 
     ////////////////////////////////////////////////////////////////////
 
+    const navigate = useNavigate()
 
-    const { checkEmailAvailability, enteredEmailValue, checkStoredEmails, resetCheckEmailAvailability } = useCheckEmailAvailability()
+    const dispatch = useAppDispatch()
 
-    const { register, handleSubmit, trigger, formState: { errors }, reset, getFieldState } = useForm<TSignUPInputs>({ resolver: zodResolver(signUpSchema), mode: "onBlur" })
+    const { loading, error, accessToken } = useAppSelector(state => state.auth)
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<TSignUPInputs>({ resolver: zodResolver(signUpSchema), mode: "onBlur" })
 
     const onSubmit: SubmitHandler<TSignUPInputs> = async (data) => {
         const { fName, lName, email, password } = data
@@ -66,59 +66,21 @@ const Register = () => {
 
 
 
-    useEffect(() => {
-        setShowPassword(false)
-        setShowRePassword(false)
-    }, [])
-
-
-
-
-    const onBlurHandler = debounce(async (e: React.FocusEvent<HTMLInputElement>) => {
-        await trigger("email")
-        const emailValue = e.target.value
-
-
-
-        const { isDirty, invalid } = getFieldState("email")
-
-        console.log(isDirty, invalid, enteredEmailValue)
-
-        if (emailValue) {
-            if (isDirty && !invalid && enteredEmailValue != emailValue) {
-                checkStoredEmails(emailValue)
-
-            }
-            if (isDirty && invalid && enteredEmailValue) {
-                return resetCheckEmailAvailability
-            }
-        }
-    }, 300)
+    const onBlurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+        console.log(e.target.value)
+    }
 
 
     useEffect(() => {
-        dispatch(resetError())
         if (error) {
             toast.error(error)
         }
-        return () => {
-            toast.remove();
-            if (location !== "/register") {
-                dispatch(resetError())
-            }
-
-
-        }
-
-
-    }, [error, dispatch, location])
+    }, [error])
 
 
     if (accessToken) {
         return <Navigate to={"/"} />
     }
-
-
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -127,7 +89,7 @@ const Register = () => {
         <>
 
             <h2 className="font-bold text-3xl text-blue-400 mb-2" >Registeration</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-md flex-col gap-2 m-auto" method="get">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex max-w-md flex-col gap-2 m-auto text-gray-900" method="get">
                 <div className="flex items-center justify-between gap-1">
                     <div>
                         <div className=" flex flex-col w-[160px] sm:w-[210px] ">
@@ -156,14 +118,8 @@ const Register = () => {
                         <label htmlFor="email2" className="mb-2 text-gray-900 font-medium text-sm" >E-Mail</label>
 
                         <input placeholder="xxxxxxxx@xxx.xxx" aria-invalid={!!errors.email} className={`focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.email || error ? "border-red-400 border-[2px] shadow-sm-light" : "border-gray-300"}`} id="email2" type="text" {...register("email")} onBlur={onBlurHandler} />
-                        {errors.email && <span className="text-xs mt-1 font-medium self-start  text-red-600">{errors.email.message} </span>}
-                        <div className="flex items-end">
-                            {enteredEmailValue && (checkEmailAvailability == "notAvailable" ? (<span className="flex items-center"><IoIosCloseCircle className="fill-red-600 mr-2" /></span>) :
-                                (<span className="flex items-center"><MdCloudDone className="fill-green-400 mr-2" /></span>))}
-                            {enteredEmailValue && (checkEmailAvailability == "notAvailable" ? (<span className="text-xs mt-1 font-medium self-start  text-red-600">{"This email is already in use."}</span>) :
-                                (<span className="text-xs mt-1 font-medium  self-start  text-green-600">{"This Email is Available for Using."} </span>))}
-                        </div>
-                        {/* {(register("email") && error && !errors.email) && <span className="flex items-center"><IoIosCloseCircle className="fill-red-600 mr-2" /> <span className="text-xs mt-1 font-medium self-start  text-red-600">This email is already in use.</span></span>} */}
+                        {errors.email && <span className="text-xs mt-1 font-medium self-end  text-red-600">{errors.email.message} </span>}
+                        {(error && !errors.email) && <span className="flex items-center"><IoIosCloseCircle className="fill-red-600 mr-2" /> <span className="text-xs mt-1 font-medium self-start  text-red-600">{error} </span></span>}
                         {/* {!error && <span className="flex items-center"><MdCloudDone className="fill-green-400 mr-2" /> <span className="text-sm font-semibold self-start  text-green-600">This Email is Available for Using </span></span>} */}
 
                     </div>

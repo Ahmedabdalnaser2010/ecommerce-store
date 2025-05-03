@@ -6,7 +6,7 @@ import animation from '../../../public/animation/OrderDone.json'
 const DoneOrderPage = () => {
     return (
 
-        <div className="flex flex-col items-center justify-evenly h-[320px] mx-auto">
+        <div className="flex flex-col items-center justify-evenly h-[320px] mx-auto text-blue-400">
             <Lottie animationData={animation} style={{ width: "300px" }} />
             <div className="font-bold text-2xl mt-4 text-center">Thank you for Ordering <br /> We are preparing your order now.</div>
             <Link to="/">

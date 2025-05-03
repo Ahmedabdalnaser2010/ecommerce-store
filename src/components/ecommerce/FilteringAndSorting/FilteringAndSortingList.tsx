@@ -27,7 +27,7 @@ const FilteringAndSortingList = ({ filterByBrands, reset, sortByPrice }: { filte
 
     const getBrandstoDropDown = removeDupliaction.map((item, index) => {
         return <li key={index} onClick={() => filterByBrands(item)} >
-            <a className="font-semibold">{item}</a>
+            <a className="font-semibold hover:bg-blue-200">{item}</a>
         </li>
     })
 
@@ -40,17 +40,17 @@ const FilteringAndSortingList = ({ filterByBrands, reset, sortByPrice }: { filte
 
 
     return (
-        <div className="rounded-lg shadow-md flex  group p-4 mx-4 justify-between lg:items-start items-center relative flex-col md:flex-row bg-white">
+        <div className="rounded-lg shadow-md flex  group p-4 mx-4 justify-between lg:items-start items-center relative flex-col md:flex-row bg-white text-gray-700 ">
 
             <div className="flex flex-row lg:flex-col justify-between lg:items-center ">
                 <div className="flex lg:flex-col items-start">
-                    <div className="flex justify-between lg:items-center mb-2 flex-col lg:flex-row">
-                        <div className="flex flex-row items-center"><FaFilter className=" w-[20px]" />  <h1 className="font-bold ml-2 py-2">Filter</h1></div>
+                    <div className="flex justify-between lg:items-center mb-2 flex-col lg:flex-row ">
+                        <div className="flex flex-row items-center "><FaFilter className=" w-[20px]" />  <h1 className="font-bold ml-2 py-2 ">Filter</h1></div>
                     </div>
 
                     <div className="flex justify-center flex-col items-center ">
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 md:w-[200px] w-[60px]  text-white font-bold"> Brands</div>
+                            <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 md:w-[200px] w-[60px]  text-white font-bold border-none"> Brands</div>
                             <ul tabIndex={0} className="dropdown-content menu bg-white  rounded-box z-1 w-52 p-2 shadow-md ">
                                 {getBrandstoDropDown}
 
@@ -71,11 +71,11 @@ const FilteringAndSortingList = ({ filterByBrands, reset, sortByPrice }: { filte
 
                     </div>
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 md:w-[200px] w-[60px] text-white font-bold"> Prices</div>
+                        <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 md:w-[200px] w-[60px] text-white font-bold border-none"> Prices</div>
                         <ul tabIndex={0} className="dropdown-content menu bg-white rounded-box z-1 w-52 p-2 shadow-md">
 
-                            <li onClick={ascendingSort} ><a className="flex justify-evenly items-center"><span className="font-semibold w-[120px]">Price Low to High</span> <FaLongArrowAltUp /> </a></li>
-                            <li onClick={descendingSort} > <a className="flex justify-evenly items-center"><span className="font-semibold w-[120px]">Price High to Low</span> <FaLongArrowAltDown /> </a></li>
+                            <li onClick={ascendingSort} ><a className="flex justify-evenly items-center hover:bg-blue-200"><span className="font-semibold w-[120px]">Price Low to High</span> <FaLongArrowAltUp /> </a></li>
+                            <li onClick={descendingSort} > <a className="flex justify-evenly items-center hover:bg-blue-200"><span className="font-semibold w-[120px]">Price High to Low</span> <FaLongArrowAltDown /> </a></li>
 
                         </ul>
                     </div>

@@ -36,7 +36,7 @@ const EmptyCartPage = () => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-evenly  mx-auto">
+        <div className="flex flex-col items-center justify-evenly  mx-auto text-blue-400">
             {/* <div className="w-[250px]"><img src={logo} alt="" /></div> */}
             <Lottie animationData={animation} style={{ width: "230px" }} />
             <div className="font-bold text-2xl mt-4">Your Cart is Empty</div>

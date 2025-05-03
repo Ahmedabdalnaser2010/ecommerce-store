@@ -23,7 +23,7 @@ const SearchingInput = ({ input, setInput }: { input: string, setInput: (e: stri
 
 
                     <div className="flex">
-                        <span className="cursor-pointer inline-flex items-center px-3 text-sm text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <span className="cursor-pointer inline-flex items-center px-3 text-sm text-gray-900 bg-gray-100 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600 hover:bg-blue-100 ">
                             <svg className="h-[1.25em] opacity-50 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  >
                                 <g
                                     strokeLinejoin="round"

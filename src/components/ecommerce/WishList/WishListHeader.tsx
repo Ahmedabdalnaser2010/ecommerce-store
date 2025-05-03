@@ -23,7 +23,7 @@ const WishListHeader = () => {
     return (
         <div className="flex-none">
             <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-circle btn-ghost ">
+                <div tabIndex={0} role="button" className="btn btn-circle btn-ghost hover:bg-blue-100 hover:border-none">
                     <div className="indicator">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -45,12 +45,12 @@ const WishListHeader = () => {
                 <div
                     tabIndex={0}
                     className="card card-compact dropdown-content bg-base-100 shadow w-52 mt-3 z-1">
-                    <div className="card-body">
-                        <span className="text-lg font-bold">{wishlistLength()} Items</span>
+                    <div className="card-body bg-white">
+                        <span className="text-lg font-bold text-gray-900">{wishlistLength()} Items</span>
 
                         <div className="card-actions">
                             <Link to="/wishlist">
-                                <button aria-label='go to wishlist page' disabled={accessToken ? false : true} className="btn btn-block text-white bg-blue-400">Go to your WishList</button>
+                                <button aria-label='go to wishlist page' disabled={accessToken ? false : true} className="btn btn-block text-white bg-blue-400 border-none">Go to your WishList</button>
                             </Link>
                         </div>
                     </div>

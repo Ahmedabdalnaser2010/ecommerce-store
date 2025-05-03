@@ -37,7 +37,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center gap-5">
+        <div className="flex flex-col justify-center items-center gap-5 text-gray-700">
             <div className="rounded-xl shadow-md w-full md:w-[400px] md:m-auto h-[350px] bg-white">
 
 
