@@ -5,12 +5,13 @@ import QuantitiyButton from '../AddToCartButton/QuantitiyButton/QuantitiyButton'
 import { useDispatch } from 'react-redux'
 import { removeItem } from 'src/store/Slices/Cart/CartSlice'
 import { wishListState } from 'src/store/Slices/WishListPage/WishListSlice';
+import { useAppSelector } from 'src/store/hooks';
 // import useCart from 'src/Hooks/useCart';
 
 
 const SelectedItemCard = ({ title, color, price, image, quantities, id }: TProducts) => {
 
-
+    const { accessToken } = useAppSelector(state => state.auth)
 
     const dispatch = useDispatch()
 
@@ -43,7 +44,7 @@ const SelectedItemCard = ({ title, color, price, image, quantities, id }: TProdu
                         <QuantitiyButton quantities={quantities} id={Number(id)} />
                     </div>
                     <div className="flex items-center justify-start gap-2 text-xl w-full ">
-                        <button aria-label='Save for later' onClick={saveItemsLaterHandler} className='flex items-center justify-between text-gray-500'> <CiHeart className='text-2xl' /><span className=' text-sm font-semibold ml-2 '>Save for later</span></button>
+                        <button aria-label='Save for later' onClick={saveItemsLaterHandler} disabled={!accessToken ? true : false} className='flex items-center justify-between text-gray-500'> <CiHeart className='text-2xl' /><span className=' text-sm font-semibold ml-2 '>Save for later</span></button>
 
                     </div>
                 </div>

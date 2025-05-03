@@ -22,6 +22,7 @@ const ProductDetailsCard = ({ title, image, price, description, brand, model, co
     const [disableSaveButton, setDisableSaveButton] = useState(false)
 
     const { wishItemState } = useAppSelector(state => state.WishList)
+    const { accessToken } = useAppSelector(state => state.auth)
 
 
     const savedItems = Object.keys(wishItemState).map(it => {
@@ -71,7 +72,7 @@ const ProductDetailsCard = ({ title, image, price, description, brand, model, co
             <div className="flex flex-col justify-between sm:flex-row  sm:align-items-start">
                 <div className="md:w-[400px] w-[300px] p-4 flex mt-2 mx-auto flex-col items-center">
                     <div className="flex items-center justify-start gap-2 text-xl  self-center ">
-                        <button aria-label='Save for later/remove dislike' onClick={saveItemsLaterHandler} className='flex items-center justify-between text-gray-500'> {!disableSaveButton ? <LuHeartOff className='text-2xl' /> : <CiHeart className='text-2xl' />}<span className=' text-sm font-semibold ml-2 '>{!disableSaveButton ? "Remove from Wishlist" : "Save for later"}</span></button>
+                        <button aria-label='Save for later/remove dislike' onClick={saveItemsLaterHandler} className='flex items-center justify-between text-gray-500 ' disabled={!accessToken ? true : false}> {!disableSaveButton ? <LuHeartOff className='text-2xl' /> : <CiHeart className='text-2xl' />}<span className=' text-sm font-semibold ml-2 '>{!disableSaveButton ? "Remove from Wishlist" : "Save for later"}</span></button>
 
                     </div>
 
