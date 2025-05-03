@@ -2,9 +2,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TSignInInputs, signInSchema } from "../../validation/signInValidation "
 import { Modal, ModalBody, ModalHeader } from "flowbite-react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "src/store/hooks";
-import { actLogInData } from "src/store/Slices/registerSlice/registerSlice";
+import { actLogInData, resetError } from "src/store/Slices/registerSlice/registerSlice";
 import toast from "react-hot-toast";
 import { HiCheck } from "react-icons/hi";
 import { useEffect, useState } from "react";
@@ -15,25 +15,42 @@ import { BiHide, BiShow } from "react-icons/bi";
 
 const Login = ({ openLoginModal, onCloseModal }: { openLoginModal: boolean, onCloseModal: () => void }) => {
 
+
+    const navigate = useNavigate()
+
+    const dispatch = useAppDispatch()
+
+    const location = useLocation().pathname
+
+
+
     const [showPassword, setShowPassword] = useState(false)
 
     const showPasswordIcon = <BiShow />
     const HidePasswordIcon = <BiHide />
 
-    const displayPasswordHandler = (e: any) => {
+
+    const { loading, accessToken, error } = useAppSelector(state => state.auth)
+
+    const displayPasswordHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
         setShowPassword(!showPassword)
         e.preventDefault()
     }
 
     useEffect(() => {
         setShowPassword(false)
-    }, [])
+        dispatch(resetError())
+        return () => {
+            if (location !== "/login") {
+                dispatch(resetError())
+            }
 
-    const navigate = useNavigate()
+        }
+    }, [dispatch, location])
 
-    const dispatch = useAppDispatch()
 
-    const { loading, accessToken } = useAppSelector(state => state.auth)
+
+
 
 
     const { register, handleSubmit, formState: { errors } } = useForm<TSignInInputs>({ resolver: zodResolver(signInSchema), mode: "onBlur" })
@@ -63,7 +80,7 @@ const Login = ({ openLoginModal, onCloseModal }: { openLoginModal: boolean, onCl
             <ModalHeader />
 
             <ModalBody>
-                <div className="flex flex-col justify-between items-center text-gray-900">
+                <div className="flex flex-col justify-between items-center">
 
                     <h3 className="text-xl font-medium text-gray-900 dark:text-white py-2">Let's get started!</h3>
                     <div className="flex justify-center text-sm font-medium text-gray-500 dark:text-gray-300 py-4">
@@ -72,14 +89,16 @@ const Login = ({ openLoginModal, onCloseModal }: { openLoginModal: boolean, onCl
                             Create account
                         </Link>
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="flex  flex-col gap-3 mx-auto mt-5 w-full" method="get">
+                    <form onSubmit={handleSubmit(onSubmit)} className="flex  flex-col gap-3 mx-auto mt-5 w-full text-gray-900" method="get">
 
 
                         <div className=" flex flex-col">
                             <label htmlFor="email2" className="mb-2 text-gray-900 font-medium text-sm">Your E-Mail</label>
 
                             <input placeholder="xxxxxxxx@xxx.xxx" aria-invalid={!!errors.email} className={`focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.email ? "border-red-600" : "border-gray-300"}`} id="email2" type="text" {...register("email")} />
-                            {errors.email && <span className="text-sm font-semibold self-end  text-red-600">{errors.email.message} </span>}
+                            {(errors.email || error) && <span className="text-sm font-semibold self-start  text-red-600">{errors.email?.message || error} </span>}
+                            {/* {(error) && <span className="text-sm font-semibold self-start  text-red-600">{error} </span>} */}
+
                         </div>
 
 
@@ -89,7 +108,7 @@ const Login = ({ openLoginModal, onCloseModal }: { openLoginModal: boolean, onCl
                             <div >
                                 <input placeholder="MyEcommerce@2025" aria-invalid={!!errors.password} className={` focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.password ? "border-red-600" : "border-gray-300"}`} id="password" type={showPassword ? "text" : "password"} {...register("password")} />
                                 {showPassword ? (<button onClick={displayPasswordHandler} className="absolute right-10 -translate-y-[-0.75em]">{HidePasswordIcon}</button>) : (<button onClick={displayPasswordHandler} className="absolute right-10 -translate-y-[-0.75em]">{showPasswordIcon}</button>)}
-                                {errors.password && <span className="text-sm font-semibold self-end  text-red-600">{errors.password.message} </span>}
+                                {errors.password && <span className="text-sm font-semibold self-start  text-red-600">{errors.password.message} </span>}
 
                             </div>
                         </div>
@@ -111,6 +130,3 @@ const Login = ({ openLoginModal, onCloseModal }: { openLoginModal: boolean, onCl
 }
 
 export default Login
-
-
-
