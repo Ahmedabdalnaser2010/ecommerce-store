@@ -28,8 +28,8 @@ const SelectedItemCard = ({ title, color, price, image, quantities, id }: TProdu
 
     return (
         <div className='flex justify-between sm:justify-start items-center flex-col sm:flex-row p-3 border-gray-100 rounded-lg shadow-md h-[380px] sm:h-[250px] bg-white text-black'>
-            <div className='w-[200px] '>
-                <img src={image} alt={title} className='w-[160px] h-[170px] mx-auto pt-4 sm:pt-0' />
+            <div className='sm:w-[280px] w-[160] '>
+                <img src={image} alt={title} className='w-full h-[170px] mx-auto pt-4 sm:pt-0' />
             </div>
             <div className="flex flex-col  justify-between p-2 items-start sm:w-[380px] " >
 
