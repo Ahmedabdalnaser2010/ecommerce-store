@@ -265,7 +265,7 @@ const Header = () => {
 
                                             </ul>
                                         </div>
-                                        <div className='flex flex-col justify-between items-start ml-2'>
+                                        <div className='flex flex-col justify-between items-start ml-2 text-gray-700'>
                                             <span className='text-sm '>Hello, </span>
                                             <span className='font-semibold'>{user?.fName ? user.fName.charAt(0).toUpperCase() + "" + user.fName.slice(1).toLowerCase() : "Guest"}</span>
 
