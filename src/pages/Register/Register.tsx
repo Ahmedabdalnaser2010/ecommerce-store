@@ -287,7 +287,7 @@ const Register = () => {
     }
 
 
-
+    console.log(!errors.email)
     // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -326,9 +326,9 @@ const Register = () => {
                         <input placeholder="xxxxxxxx@xxx.xxx" aria-invalid={!!errors.email} className={`focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.email || error ? "border-red-400 border-[2px] shadow-sm-light" : "border-gray-300"}`} id="email2" type="text" {...register("email")} onBlur={onBlurHandler} />
                         {errors.email && <span className="text-xs mt-1 font-medium self-start  text-red-600">{errors.email.message} </span>}
                         <div className="flex items-end">
-                            {enteredEmailValue && (checkEmailAvailability == "notAvailable" ? (<span className="flex items-center"><IoIosCloseCircle className="fill-red-600 mr-2" /></span>) :
+                            {(enteredEmailValue && !errors.email) && (checkEmailAvailability == "notAvailable" ? (<span className="flex items-center"><IoIosCloseCircle className="fill-red-600 mr-2" /></span>) :
                                 (<span className="flex items-center"><MdCloudDone className="fill-green-400 mr-2" /></span>))}
-                            {enteredEmailValue && (checkEmailAvailability == "notAvailable" ? (<span className="text-xs mt-1 font-medium self-start  text-red-600">{"This email is already in use."}</span>) :
+                            {(enteredEmailValue && !errors.email) && (checkEmailAvailability == "notAvailable" ? (<span className="text-xs mt-1 font-medium self-start  text-red-600">{"This email is already in use."}</span>) :
                                 (<span className="text-xs mt-1 font-medium  self-start  text-green-600">{"This Email is Available for Using."} </span>))}
                         </div>
                         {/* {(register("email") && error && !errors.email) && <span className="flex items-center"><IoIosCloseCircle className="fill-red-600 mr-2" /> <span className="text-xs mt-1 font-medium self-start  text-red-600">This email is already in use.</span></span>} */}
@@ -343,7 +343,7 @@ const Register = () => {
                         {/* <input aria-invalid={!!errors.password} className={`focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.password ? "border-red-400 border-[2px] shadow-sm-light" : "border-gray-300"}`} id="password" type="password" {...register("password")} />
                         {errors.password && <span className="text-xs mt-1 font-medium self-end  text-red-600">{errors.password.message} </span>} */}
                         <div className="relative" >
-                            <input placeholder="MyEcommerce@2025" aria-invalid={!!errors.password} className={` focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.password ? "border-red-600" : "border-gray-300"}`} id="password" type={showPassword ? "text" : "password"} {...register("password")} />
+                            <input placeholder="************" aria-invalid={!!errors.password} className={` focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.password ? "border-red-600" : "border-gray-300"}`} id="password" type={showPassword ? "text" : "password"} {...register("password")} />
                             {showPassword ? (<button aria-label="show password" onClick={displayPasswordHandler} className="absolute right-6 -translate-y-[-0.75em]">{HidePasswordIcon}</button>) : (<button aria-label="hide password" onClick={displayPasswordHandler} className="absolute right-6 -translate-y-[-0.75em]">{showPasswordIcon}</button>)}
                             {errors.password && <span className="text-sm font-semibold self-end  text-red-600">{errors.password.message} </span>}
 
@@ -354,10 +354,9 @@ const Register = () => {
                 <div>
                     <div className=" flex flex-col">
                         <label htmlFor="confirm-password" className="mb-2 text-gray-900 font-medium text-sm">Confirm password</label>
-                        {/* <input aria-invalid={!!errors.confirmPassword} className={`focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.confirmPassword ? "border-red-400 border-[2px] shadow-sm-light" : "border-gray-300"}`} id="confirm-password" type="password" {...register("confirmPassword")} />
-                        {errors.confirmPassword && <span className="text-xs mt-1 font-medium self-end  text-red-600">{errors.confirmPassword.message} </span>} */}
+
                         <div className="relative" >
-                            <input placeholder="MyEcommerce@2025" aria-invalid={!!errors.confirmPassword} className={` focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.confirmPassword ? "border-red-600" : "border-gray-300"}`} id="confirm-password" type={showRePassword ? "text" : "password"} {...register("confirmPassword")} />
+                            <input placeholder="************" aria-invalid={!!errors.confirmPassword} className={` focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.confirmPassword ? "border-red-600" : "border-gray-300"}`} id="confirm-password" type={showRePassword ? "text" : "password"} {...register("confirmPassword")} />
                             {showRePassword ? (<button aria-label="show password" onClick={displayRePasswordHandler} className="absolute right-6 -translate-y-[-0.75em]">{HidePasswordIcon}</button>) : (<button aria-label="hide password" onClick={displayRePasswordHandler} className="absolute right-6 -translate-y-[-0.75em]">{showPasswordIcon}</button>)}
                             {errors.confirmPassword && <span className="text-sm font-semibold self-end  text-red-600">{errors.confirmPassword.message} </span>}
 
@@ -368,21 +367,11 @@ const Register = () => {
 
 
 
-                {/* <div className="flex items-center gap-2">
-                <Checkbox id="agree" />
-                <Label htmlFor="agree" className="flex">
-                    I agree with the&nbsp;
-                    <Link to="/cart" className="text-blue-400 hover:underline dark:text-blue-600">
-                        terms and conditions
-                    </Link>
-                </Label>
-            </div> */}
                 <button aria-label="register" disabled={loading === "pending"} className={`${loading === "pending" ? "bg-gray-400" : "bg-blue-400"}  mt-4 text-white capitalize font-semibold focus:bg-blue-500 text-sm  p-2.5 h-[41.6px] border-gray-300 border-[1px] rounded-lg w-full`} type="submit">
                     {loading === "pending" ? (<>Please Wait for Checking <span className="loading loading-spinner loading-sm"></span></>) : ("Register new account")}
                 </button>
 
                 <span className="self-center"><span>Already have an account? </span><Link to={"/login"} className="text-blue-400 hover:underline dark:text-cyan-500 font-medium">Log In</Link></span>
-                {/* {openLoginModaltwo && <Login onCloseModal={() => setOpenLoginModaltwo(false)} openLoginModal={openLoginModaltwo} />} */}
 
             </form >
 

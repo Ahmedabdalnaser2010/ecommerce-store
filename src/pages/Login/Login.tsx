@@ -106,7 +106,7 @@ const Login = ({ openLoginModal, onCloseModal }: { openLoginModal: boolean, onCl
                         <div className=" flex flex-col">
                             <label htmlFor="password2" className="mb-2 text-gray-900 font-medium text-sm">Your password</label>
                             <div >
-                                <input placeholder="MyEcommerce@2025" aria-invalid={!!errors.password} className={` focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.password ? "border-red-600" : "border-gray-300"}`} id="password" type={showPassword ? "text" : "password"} {...register("password")} />
+                                <input placeholder="************" aria-invalid={!!errors.password} className={` focus:border-blue-300 text-sm  p-2.5 bg-gray-50 border-[1px] rounded-lg w-full ${errors.password ? "border-red-600" : "border-gray-300"}`} id="password" type={showPassword ? "text" : "password"} {...register("password")} />
                                 {showPassword ? (<button onClick={displayPasswordHandler} className="absolute right-10 -translate-y-[-0.75em]">{HidePasswordIcon}</button>) : (<button onClick={displayPasswordHandler} className="absolute right-10 -translate-y-[-0.75em]">{showPasswordIcon}</button>)}
                                 {errors.password && <span className="text-sm font-semibold self-start  text-red-600">{errors.password.message} </span>}
 

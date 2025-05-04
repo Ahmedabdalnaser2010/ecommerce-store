@@ -58,7 +58,7 @@ const PreviousOrders = () => {
                 >
                     # {filterUserOrders.indexOf(ele) + 1}
                 </th>
-                <td className="px-6 py-4">{getItemsInEachOrder[filterUserOrders.indexOf(ele)]} item(s)/ <Link className="text-blue-400 text-sm" to={`/previousOrdersDetails/${idOfOrdersforUser[filterUserOrders.indexOf(ele)]}/${Number([filterUserOrders.indexOf(ele)]) + 1}`} >Product Details</Link ></td>
+                <td className="px-6 py-4">{getItemsInEachOrder[filterUserOrders.indexOf(ele)]} item(s)/ <Link className="text-blue-400 hover:text-blue-500 text-sm" to={`/previousOrdersDetails/${idOfOrdersforUser[filterUserOrders.indexOf(ele)]}/${Number([filterUserOrders.indexOf(ele)]) + 1}`} >Product Details</Link ></td>
                 <td className="px-6 py-4">{getQuantities[filterUserOrders.indexOf(ele)]}</td>
                 <td className="px-6 py-4 text-base font-semibold text-gray-950">${ele.subTotal}</td>
 
@@ -70,7 +70,7 @@ const PreviousOrders = () => {
     return (
 
         <div>
-            <h2 className='font-bold text-3xl text-center p-2 text-blue-400 italic mb-5 '>Your Previous Orders</h2>
+            <h2 className='font-bold text-3xl text-center p-2 text-blue-400  italic mb-5 '>Your Previous Orders</h2>
             <Loading loading={loading} error={error}>
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg md:w-[70%] m-auto">
                     <table className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400  ">
