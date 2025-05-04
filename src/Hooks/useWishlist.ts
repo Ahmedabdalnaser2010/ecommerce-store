@@ -32,9 +32,6 @@ const useWishlist = (autoFetch = false) => {
 
     const newAddedItems = selectedItem
 
-    // const va = Object.keys(gettingStoredWishlistItems) ? gettingStoredWishlistItems : {}
-    // const vat = Object.keys(selectedItem) ? selectedItem : {}
-    // const merge = { ...va, ...vat }
 
 
     useEffect(() => {
@@ -55,11 +52,6 @@ const useWishlist = (autoFetch = false) => {
 
 
 
-    // console.log(selectedItem)
-    // console.log(gettingStoredWishlistItems)
-    // console.log(filteringLastOrder)
-    // console.log(gettingStateStoredWishlistItems)
-    // console.log(gettingStoredWishlistItems)
 
 
 

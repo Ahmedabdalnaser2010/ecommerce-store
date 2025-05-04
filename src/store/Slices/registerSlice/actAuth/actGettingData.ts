@@ -25,7 +25,7 @@ const actGettingRegisterData = createAsyncThunk("auth/actGettingData", async (fo
         return res.data
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            console.log(error)
+
             return (rejectWithValue(error.response?.data || error.message))
         } else {
             return rejectWithValue("Unexpected Error")

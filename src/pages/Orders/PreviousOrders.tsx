@@ -66,7 +66,7 @@ const PreviousOrders = () => {
             // { concatenatedIds[filterUserOrders.indexOf(ele)] }
         )
     })
-    console.log(mappingOrders)
+
     return (
 
         <div>

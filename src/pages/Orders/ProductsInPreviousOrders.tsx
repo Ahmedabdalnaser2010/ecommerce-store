@@ -19,7 +19,7 @@ const ProductsInPreviousOrders = () => {
 
     const getItems = getOrder.flatMap(ele => ele.itemsInCart)
 
-    console.log(getItems)
+
 
     useEffect(() => {
 
