@@ -119,7 +119,7 @@ const AddToCartButton = ({ id }: { id: number }) => {
             <div className="flex gap-4">
                 <button
                     aria-label={isCompleted ? ("You Reached Your Limit ..") : ("Add to Cart<")}
-                    disabled={isDisabled} style={{ backgroundColor: isDisabled ? "rgb(180 180 181)" : "" }} className="h-[40px] bg-blue-400 rounded-sm text-sm text-white w-full block font-medium px-4 transition" onClick={addItemstoCart}
+                    disabled={isDisabled} style={{ backgroundColor: isDisabled ? "rgb(180 180 181)" : "" }} className="h-[40px] bg-blue-400 hover:bg-blue-500 rounded-sm text-sm text-white w-full block font-medium px-4 transition" onClick={addItemstoCart}
                 >
                     {/* {isDisabled ? <div className="flex justify-center items-center "><Lottie animationData={loading} style={{ width: "2em", marginLeft: "-2em", paddingRight: "0.5em", display: isCompleted ? "none" : "" }} /> <span className="">Add to Cart</span></div> : isCompleted ? <span> You Exceeded Your Limit</span> : <span>Add to Cart</span>} */}
                     {MessageContent()}

@@ -16,7 +16,6 @@ const useCart = (autoFetch = true) => {
     const { productInfo, items } = useAppSelector(state => state.cart)
 
     const location = useLocation().pathname
-    console.log(location)
 
     const countOfItems = useAppSelector(totalQuantitiesOfAllItems) || 0
 
@@ -57,32 +56,9 @@ const useCart = (autoFetch = true) => {
     // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     const newAddedProduct = productInfo.map((item) => ({ ...item, quantities: items[item.id ?? 0] }))
-    // const newAddedProduct = [...productInfo]
 
     const mergingAllItems = [...gettingStoredItems, ...newAddedProduct]
-    // .reduce(
 
-    //     (mergedItems, currentItem) => {
-    //         // Find if item already exists in merged array
-    //         const existingIndex = mergedItems.findIndex(item => item.id === currentItem.id);
-    //         console.log(existingIndex)
-    //         if (existingIndex >= 0) {
-    //             // Merge quantities if item exists
-    //             mergedItems[existingIndex].quantities =
-    //                 (mergedItems[existingIndex].quantities || 0) +
-    //                 (currentItem.quantities || 0);
-    //         } else {
-    //             // Add new item with normalized quantity
-    //             mergedItems.push({
-    //                 ...currentItem,
-    //                 quantities: currentItem.quantities || 0
-    //             });
-    //         }
-    //         return mergedItems;
-    //     },
-    //     [] as TProducts[]
-    // );
-    // const productDetails: TProducts[] = [...productInfo]
     const productDetails: TProducts[] = productInfo.map((ele: TProducts) => (
         {
             ...ele,
@@ -103,13 +79,10 @@ const useCart = (autoFetch = true) => {
 
 
 
-    const hh = !Object.keys(items).filter(el => el in getAllItems)
-    console.log(hh)
     const [intialization, setIntialization] = useState(false)
 
     useEffect(() => {
-        // 
-        // &&JSON.stringify(getAllItems).length >= JSON.stringify(items).length
+
         if (accessToken) {
             setIntialization(false)
         }
@@ -134,12 +107,6 @@ const useCart = (autoFetch = true) => {
 
 
 
-    // stored items+new items
-    // const countOfExistingItems = productDetails.length > 0 ? productDetails.flatMap(el => el.quantities).reduce((prev, curr) => { return Number(prev) + Number(curr) }, 0) : 0
-    // const countOfExistingItems = mergingAllItems.length > 0 ? mergingAllItems.flatMap(el => el.quantities).reduce((prev, curr) => { return Number(prev) + Number(curr) }, 0) : 0
-    // const checkingExistingItems = getStoredOrderLength > 0 ? countOfExistingItems : 0
-
-    // const totalCountOfProducts = accessToken ? (countOfExistingItems) : (countOfItems)
     const totalCountOfProducts = (countOfItems)
 
 
@@ -151,11 +118,6 @@ const useCart = (autoFetch = true) => {
     }
 
 
-    console.log(getStoredOrder)
-    console.log(getStoredOrderLength)
-    console.log(gettingStoredItems)
-    console.log(getAllItems)
-    console.log(items)
 
 
 

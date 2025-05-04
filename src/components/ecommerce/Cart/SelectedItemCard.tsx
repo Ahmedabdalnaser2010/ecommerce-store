@@ -30,7 +30,7 @@ const SelectedItemCard = ({ title, color, price, image, quantities, id }: TProdu
     return (
         <div className='flex justify-between sm:justify-start items-center flex-col sm:flex-row p-3 border-gray-100 rounded-lg shadow-md h-[380px] sm:h-[250px] bg-white text-black'>
             <div className='sm:w-[280px] w-[160] '>
-                <img src={image} alt={title} className='w-full h-[170px] mx-auto pt-4 sm:pt-0' />
+                <img src={image} alt={title} className='w-[170px] h-[170px] mx-auto pt-4 sm:pt-0' />
             </div>
             <div className="flex flex-col  justify-between p-2 items-start sm:w-[380px] " >
 
@@ -38,13 +38,13 @@ const SelectedItemCard = ({ title, color, price, image, quantities, id }: TProdu
                 <span className="text-base text-gray-400 capitalize font-semibold">Available Color: {color}</span>
                 <span className="text-base text-blue-400 font-semibold pr-3">price: ${price.toFixed(2)}  </span>
                 <p className="text-xl text-green-400 font-bold">In stock</p>
-                <div className='flex justify-between items-center gap-8'>
+                <div className='flex justify-between items-center gap-6'>
                     <div className="flex items-center justify-start gap-2 text-xl w-full">
-                        <button aria-label='remove' onClick={removeItemsfromCart} className='flex items-center justify-between text-gray-500'> <RiDeleteBin5Line /><span className=' text-sm font-semibold ml-2 '>Remove</span></button>
+                        <button aria-label='remove' onClick={removeItemsfromCart} className='flex items-center justify-between text-gray-500 hover:text-gray-700'> <RiDeleteBin5Line /><span className=' text-sm font-semibold ml-2 '>Remove</span></button>
                         <QuantitiyButton quantities={quantities} id={Number(id)} />
                     </div>
                     <div className="flex items-center justify-start gap-2 text-xl w-full ">
-                        <button aria-label='Save for later' onClick={saveItemsLaterHandler} disabled={!accessToken ? true : false} className='flex items-center justify-between text-gray-500'> <CiHeart className='text-2xl' /><span className=' text-sm font-semibold ml-2 '>Save for later</span></button>
+                        <button aria-label='Save for later' onClick={saveItemsLaterHandler} disabled={!accessToken ? true : false} className='flex items-center justify-between text-gray-500 hover:text-red-500'> <CiHeart className='text-2xl' /><span className=' text-sm font-semibold ml-2 '>Save for later</span></button>
 
                     </div>
                 </div>

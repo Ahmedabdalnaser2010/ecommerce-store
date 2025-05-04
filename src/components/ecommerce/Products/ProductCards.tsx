@@ -62,14 +62,14 @@ const ProductCards = ({ title, description, price, discount, id, category, image
 
                     <div className="bg-slate-50 border-gray-100 border-t h-[140px] p-4 relative" >
                         <div className=" ">
-                            <span className="text-blue-500 font-bold pr-3">${price.toFixed(2)}  </span>
+                            <span className="text-blue-400 font-bold pr-3">${price.toFixed(2)}  </span>
                             <span className="text-gray-400 font-semibold text-sm line-through">{checkDiscount}</span>
 
                         </div>
                         <h3 className="h-[30px] text-gray-900 text-base font-medium mt-1 overflow-hidden" title={title}>{title.substring(0, 25)} ...</h3>
 
                         <p className="h-[60px] text-gray-700 text-sm line-clamp-3 mt-1">
-                            {description?.substring(0, 55)} ... <Link to="#" className="text-blue-400 text-sm underline">More Details</Link>
+                            {description?.substring(0, 55)} ... <Link to={`/categories/${category}/${id}`} className="text-blue-400 text-sm underline hover:text-blue-500">More Details</Link>
                         </p>
                     </div>
                 </Link>

@@ -87,6 +87,7 @@ const Home = () => {
                 </div>
             </Loading>
             <hr className='border-b-[1px] shadow-2xl'></hr>
+            <span className='px-3 py-2 m-auto text-2xl font-bold text-white bg-blue-400 mt-4 rounded-xl'>Our Products</span>
             <Loading loading={productsLoading} error={productsError}>
 
                 <div className='grid grid-cols-1 sm:grid-cols-2  gap-x-4 gap-y-6 md:grid-cols-3 lg:grid-cols-4  justify-items-center mt-20 '>{productsList()}</div>

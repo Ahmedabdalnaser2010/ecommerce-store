@@ -50,7 +50,7 @@ const FilteringAndSortingList = ({ filterByBrands, reset, sortByPrice }: { filte
 
                     <div className="flex justify-center flex-col items-center ">
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 md:w-[200px] w-[60px]  text-white font-bold border-none"> Brands</div>
+                            <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 md:w-[200px] w-[60px]  text-white font-bold border-none hover:bg-blue-500"> Brands</div>
                             <ul tabIndex={0} className="dropdown-content menu bg-white  rounded-box z-1 w-52 p-2 shadow-md ">
                                 {getBrandstoDropDown}
 
@@ -67,11 +67,11 @@ const FilteringAndSortingList = ({ filterByBrands, reset, sortByPrice }: { filte
                 </div>
                 <div className="flex lg:flex-col items-start">
                     <div className="flex justify-between items-center mb-2">
-                        <div className="flex flex-row items-center"><MdSort className="text-2xl w-[20px]" />  <h1 className="font-bold ml-2 py-2">Sort</h1></div>
+                        <div className="flex flex-row items-center"><MdSort className="text-2xl w-[20px]" />  <h1 className="font-bold ml-2 py-2 ">Sort</h1></div>
 
                     </div>
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 md:w-[200px] w-[60px] text-white font-bold border-none"> Prices</div>
+                        <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 md:w-[200px] w-[60px] text-white font-bold border-none hover:bg-blue-500"> Prices</div>
                         <ul tabIndex={0} className="dropdown-content menu bg-white rounded-box z-1 w-52 p-2 shadow-md">
 
                             <li onClick={ascendingSort} ><a className="flex justify-evenly items-center hover:bg-blue-200"><span className="font-semibold w-[120px]">Price Low to High</span> <FaLongArrowAltUp /> </a></li>
@@ -81,7 +81,7 @@ const FilteringAndSortingList = ({ filterByBrands, reset, sortByPrice }: { filte
                     </div>
                 </div>
             </div>
-            <button aria-label='reset all' className=" p-1 rounded-lg bg-zinc-300 text-zinc-600 w-[80px] lg:absolute right-[20px] top-[22px]  font-medium text-[0.85em] self-center" onClick={reset}>Reset All</button>
+            <button aria-label='reset all' className=" p-1 rounded-lg bg-zinc-200 text-zinc-600 w-[80px] lg:absolute right-[20px] top-[22px]  font-medium text-[0.85em] self-center hover:bg-zinc-300" onClick={reset}>Reset All</button>
         </div >
     )
 }

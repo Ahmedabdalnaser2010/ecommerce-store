@@ -23,7 +23,7 @@ const SubtotalCard = ({ totalprice, totalCount, totalDiscount }: { totalprice: n
 
     return (
         <div className="h-[280px]  lg:w-[300px] mt-9 lg:mt-0 w-[320px] text-gray-700 " >
-            <div className='flex justify-evenly items-center flex-col p-4 bg-gray-50 border-gray-100 rounded-t-lg rounded-b-none '>
+            <div className='flex justify-evenly items-center flex-col p-4 bg-white shadow-lg border-gray-100 rounded-t-lg rounded-b-none '>
 
 
 

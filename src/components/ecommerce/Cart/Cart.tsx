@@ -29,10 +29,10 @@ const Cart = () => {
                     tabIndex={0}
                     className="card card-compact dropdown-content bg-base-100 shadow w-52 mt-3 z-1">
                     <div className="card-body bg-white">
-                        <span className="text-lg font-bold text-gray-900">{totalCountOfProducts} Items</span>
-                        <span className="text-info">Subtotal: ${gettingSubtotal()}</span>
+                        <span className=" font-bold text-xl text-gray-900">{totalCountOfProducts} Items</span>
+                        <span className="text-info font-semibold">Subtotal: ${gettingSubtotal()}</span>
                         <div className="card-actions ">
-                            <Link to="/cart"> <button aria-label="go to cart" className="btn btn-block text-white bg-blue-400 border-none">Go to your Cart</button></Link>
+                            <Link to="/cart"> <button aria-label="go to cart" className="btn btn-block text-white bg-blue-400 border-none hover:bg-blue-500">Go to your Cart</button></Link>
                         </div>
                     </div>
                 </div>

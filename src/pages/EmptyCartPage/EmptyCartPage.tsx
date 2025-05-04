@@ -1,5 +1,4 @@
 import { Link } from "react-router"
-// import logo from "../../../public/empty cart.png"
 import Lottie from "lottie-react"
 import animation from '../../../public/animation/Empty Cart.json'
 import { useAppDispatch, useAppSelector } from "src/store/hooks"
@@ -15,6 +14,8 @@ const EmptyCartPage = () => {
 
     const getUserId = useMemo(() => { return Array.isArray(order) ? order.filter(ele => { return ele.userId == user?.id }) : [] }, [order, user?.id]);
 
+    const checkExcutionOfLastOrder = getUserId.flatMap(el => el.itemsInCart)
+
     useEffect(() => {
         if (getUserId.length == 0) {
             dispatch(getUserOrder())
@@ -26,10 +27,10 @@ const EmptyCartPage = () => {
 
 
 
-        if (getUserId.length > 0) {
+        if (getUserId.length > 0 && checkExcutionOfLastOrder.length > 0) {
 
             return (<Link to="/previousOrders">
-                <button aria-label='Previous Orders' className="h-[40px] bg-blue-400 rounded-md text-sm text-white w-[140px]  block font-medium px-4 transition ">Previous Orders </button>
+                <button aria-label='Previous Orders' className="h-[40px] bg-blue-400 hover:bg-blue-500 rounded-md text-sm text-white w-[140px]  block font-medium px-4 transition ">Previous Orders </button>
 
             </Link>)
         }

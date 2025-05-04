@@ -104,7 +104,7 @@ const ProductDetailsCard = ({ title, image, price, description, brand, model, co
                         <RatingComponent />
                         <div className="price">
                             <span className="text-xl text-blue-600 font-bold pr-3 ">${price.toFixed(2)}  </span>
-                            <span className="text-gray-400 text-2xl font-semibold line-through">{checkDiscount}</span>
+                            <span className="text-gray-400 text-base font-bold line-through">{checkDiscount}</span>
                             <span className="text-[0.9em] text-white font-medium px-3">
                                 {offBadge()}
                             </span>

@@ -50,7 +50,7 @@ const WishListHeader = () => {
 
                         <div className="card-actions">
                             <Link to="/wishlist">
-                                <button aria-label='go to wishlist page' disabled={accessToken ? false : true} className="btn btn-block text-white bg-blue-400 border-none">Go to your WishList</button>
+                                <button aria-label='go to wishlist page' disabled={accessToken ? false : true} className="btn btn-block text-white bg-blue-400 border-none hover:bg-blue-500">Go to your WishList</button>
                             </Link>
                         </div>
                     </div>

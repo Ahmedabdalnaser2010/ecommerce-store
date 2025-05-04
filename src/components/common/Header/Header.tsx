@@ -267,7 +267,7 @@ const Header = () => {
                                         </div>
                                         <div className='flex flex-col justify-between items-start ml-2 text-gray-700'>
                                             <span className='text-sm '>Hello, </span>
-                                            <span className='font-semibold'>{user?.fName ? user.fName.charAt(0).toUpperCase() + "" + user.fName.slice(1).toLowerCase() : "Guest"}</span>
+                                            <Link to={"/profile"}>  <span className='font-semibold hover:text-blue-400'>{user?.fName ? user.fName.charAt(0).toUpperCase() + "" + user.fName.slice(1).toLowerCase() : "Guest"}</span ></Link>
 
                                             {/* <span className='font-bold text-blue-400'>LogOut</span> */}
                                         </div>
@@ -277,10 +277,10 @@ const Header = () => {
                                 (<Link to={"/login"}>
                                     <button className='flex items-center ' aria-label='Login'>
 
-                                        <FiUser className='text-2xl text-black  ' />
+                                        <FiUser className='text-2xl text-black  hover:text-blue-400' />
                                         <div className='flex flex-col justify-between items-start ml-2 '>
                                             <span className='text-sm'>Hello,</span>
-                                            <span className='font-bold '>Login</span>
+                                            <span className='font-bold hover:text-blue-400 '>Login</span>
                                         </div>
 
                                     </button>

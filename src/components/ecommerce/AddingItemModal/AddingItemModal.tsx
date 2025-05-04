@@ -88,7 +88,7 @@ export function AddingItemModal({ status, onClose, id }: { status: boolean, onCl
           <Link to="/">
             <button
               aria-label='Countinue Shopping'
-              onClick={onClose} className="bg-blue-400 hover:bg-blue-300 py-2 px-4 rounded-md text-white transition-all duration-[200]" >Countinue Shopping</button>
+              onClick={onClose} className="bg-blue-400 hover:bg-blue-500 py-2 px-4 rounded-md text-white transition-all duration-[200]" >Countinue Shopping</button>
           </Link>
           <Link to="/cart">
             <button

@@ -11,7 +11,7 @@ const PaginationComponent = ({ pagesCount, currentPage, onPageChange }: { pagesC
     }
 
     return (
-        <div onClick={handlePaginationClick} className="  flex justify-center bg-white border-gray-200  bottom-[-10px] dark:bg-gray-800 dark:border-gray-600 relative left-0 z-50 ">
+        <div onClick={handlePaginationClick} className="  flex justify-center bg-zinc-50 border-gray-200  bottom-[-10px] dark:bg-gray-800 dark:border-gray-600 relative left-0 z-50 ">
             <Pagination currentPage={currentPage} totalPages={pagesCount} onPageChange={onPageChange} />
         </div>
     );

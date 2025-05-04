@@ -25,12 +25,15 @@ const Profile = () => {
     const checkUser = () => {
 
         const getUserId = Array.isArray(order) ? order.filter(ele => { return ele.userId == user?.id }) : []
-        // const getUser = getUserId.map(ele => { return ele.itemsInCart })
 
 
-        if (getUserId.length > 0) {
+        const checkExcutionOfLastOrder = getUserId.flatMap(el => el.itemsInCart)
+
+
+
+        if (getUserId.length >= 0 && checkExcutionOfLastOrder.length > 0) {
             return (<Link to="/previousOrders">
-                <button aria-label="preview your pervious orders" className="h-[40px] bg-blue-400 rounded-md text-sm text-white w-[180px]  block font-medium px-4 transition ">Your Previous Orders </button>
+                <button aria-label="preview your pervious orders" className="h-[40px] bg-blue-400 hover:bg-blue-500 rounded-md text-sm text-white w-[180px]  block font-medium px-4 transition ">Your Previous Orders </button>
 
             </Link>)
         }
