@@ -72,9 +72,9 @@ const PreviousOrders = () => {
         <div>
             <h2 className='font-bold text-3xl text-center p-2 text-blue-400  italic mb-5 '>Your Previous Orders</h2>
             <Loading loading={loading} error={error}>
-                <div className="relative overflow-x-auto shadow-md sm:rounded-lg md:w-[70%] m-auto">
+                <div className="relative overflow-auto shadow-md sm:rounded-lg md:w-[700px] m-auto h-[320px]">
                     <table className="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400  ">
-                        <thead className="text-base text-gray-700 shadow-md bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                        <thead className="text-base sticky top-0 text-gray-700 shadow-md bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                             <tr className="">
                                 <th scope="col" className="px-6 py-3">
                                     Order Number

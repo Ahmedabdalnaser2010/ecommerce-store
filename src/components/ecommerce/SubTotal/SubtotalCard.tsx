@@ -54,7 +54,7 @@ const SubtotalCard = ({ totalprice, totalCount, totalDiscount }: { totalprice: n
 
             </div >
             <>
-                <button aria-label='checkout' onClick={accessToken ? () => setOpenModal(true) : () => navigate("/login")} className="h-[40px] bg-blue-400 rounded-b-lg rounded-t-none  text-sm text-white w-full block font-medium px-4 transition">Checkout </button>
+                <button aria-label='checkout' onClick={accessToken ? () => setOpenModal(true) : () => navigate("/login")} className="h-[40px] bg-blue-400 hover:bg-blue-500 rounded-b-lg rounded-t-none  text-sm text-white w-full block font-medium px-4 transition">Checkout </button>
 
                 <SubmitingOrder openModal={openModal} onClose={() => { setOpenModal(false) }} totalprice={totalprice} />
             </>
