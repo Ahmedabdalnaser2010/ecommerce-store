@@ -30,18 +30,6 @@ const ProductsInPreviousOrders = () => {
 
 
 
-    // const productsCard = () => {
-    //     return (
-    //         <>
-    //             {getItems.map((item: TProducts) => (
-    //                 <div key={item.id}>
-    //                     <ProductCards {...item} />
-    //                 </div>
-    //             ))}
-    //         </>
-    //     )
-    // }
-
     const productsCard = () => {
 
         if (getItems.length > 0) {
@@ -52,7 +40,7 @@ const ProductsInPreviousOrders = () => {
                         <Link to={`/categories/${item.category}/${item.id}`}>
                             <div className='flex justify-between sm:justify-start items-center flex-col gap-3 sm:flex-row p-3 border-gray-100  rounded-t-lg shadow-lg md:h-[200px] h-[320px] bg-white'>
                                 <div className='w-[200px] '>
-                                    <img src={item.image} alt={item.title} className='w-[160px] h-[170px] mx-auto pt-4 sm:pt-0' />
+                                    <img src={item.image} alt={item.title} className='w-[160px] mx-auto pt-4 sm:pt-0' />
                                 </div>
                                 <div className="flex flex-col  bg-white justify-between p-2 items-start sm:w-[380px] " >
 
